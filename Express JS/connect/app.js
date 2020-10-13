@@ -9,6 +9,12 @@ var usersRouter = require('./routes/users');
 var namesRouter = require('./routes/names');
 
 var app = express();
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
+    next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
